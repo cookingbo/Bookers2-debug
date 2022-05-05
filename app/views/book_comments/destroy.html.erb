@@ -1,2 +1,1 @@
-<h1>BookComments#destroy</h1>
-<p>Find me in app/views/book_comments/destroy.html.erb</p>
+$('.favorite_buttons_<%= book.id %>').html("<%= j(render 'book_comments/counter', book: @comment.book) %>")
