@@ -18,7 +18,6 @@ class BooksController < ApplicationController
     if @book_new.save
       redirect_to book_path(@book_new), notice: "You have created book successfully."
     else
-      @user = current_user
       @books = Book.all
       render:index
     end
