@@ -3,17 +3,14 @@ class BookCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @comment = current_user.book_comments.new(book_comment_params)
     @comment.book_id = @book.id
-    if @comment.save
-      render:index
-    else
-      render 'books/show'
-    end
+    @comment.user_id = current_user.id
+    @comment.save
   end
 
   def destroy
-    BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
     @book = Book.find(params[:book_id])
-    render:index
+    book_comment = @book.book_comments.find(params[:id])
+    book_comment.destroy
   end
 
   private
